@@ -1,449 +1,278 @@
 <!DOCTYPE html>
 <html lang="ja">
+  
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=1200">
   <title>Creation</title>
-<script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
-<meta name="viewport" content="width=1200">
-  
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: #fff;
+      font-family: 'Georgia', serif;
+      overflow-x: hidden;
+      text-align: center;
+    }
+
+    header {
+      background: #111;
+      color: #fff;
+      text-align: center;
+      padding: 30px;
+      font-size: 40px;
+    }
+
+    header a {
+      text-decoration: none;
+      color: white;
+    }
+
+    .container {
+      width: 80%;
+      margin: 0 auto;
+      text-align: center;
+      position: relative;
+    }
+
+    /* ===== 小さい写真3つ＋人物を並べるエリア ===== */
+    .photo-group {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 120px;
+      gap: 40px; /* 写真の間隔 */
+      flex-wrap: wrap;
+    }
+
+    /* 左側の小さい写真3つ */
+    .mini-group {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 20px;
+    }
+
+    .mini-group img {
+      width: 120px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+
+    .mini-group img:hover {
+      transform: scale(1.05);
+    }
+
+    .ao {
+      margin-right:160px;
+    }
+
+    .town {
+      margin-right: 60px;
+    }
+
+    /* 人物大写真 */
+    .person {
+      width: 30%;
+      max-width: 350px;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+
+    .person:hover {
+      transform: scale(1.05);
+    }
+
+    /* テキスト重ね */
+    .text1 {
+      position: absolute;
+      top: 20px;
+      right: 40%;
+      font-size: 3vw;
+      color: #ddd;
+    }
+
+    .text1 span {
+      display: block;
+      margin-top: 20px;
+    }
+
+    /* デザイン文字 */
+    .design {
+      position: absolute;
+      top: 200px;
+      left: 15%;
+      font-size: 7vw;
+      color: #cddc39;
+    }
+
+    /* ===== 大きな画像ブロック共通 ===== */
+    .image-block {
+      position: relative;
+      display: inline-block;
+      margin: 50px 20px;
+    }
+
+    .image-block img {
+      width: 75%;
+      height: auto;
+      display: block;
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+
+    .image-block img:hover {
+      transform: scale(1.03);
+    }
+
+    .image-block h3,
+    .image-block h4 {
+      position: absolute;
+      top: 89%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: #fff;
+      font-size: 3vw;
+      text-shadow: 2px 2px 4px #000;
+      margin: 0;
+    }
+
+    footer {
+      background: #111;
+      color: #fff;
+      text-align: center;
+      padding: 130px;
+      font-size: 80px;
+    }
+
+    /* ===== モーダル拡大表示 ===== */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 2000;
+      padding-top: 60px;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0, 0, 0, 0.9);
+    }
+
+    .modal-content {
+      margin: auto;
+      display: block;
+      max-width: 90%;
+      max-height: 80vh;
+      border-radius: 10px;
+    }
+
+    .modal-content,
+    #caption { 
+      animation-name: zoom;
+      animation-duration: 0.6s;
+    }
+
+    @keyframes zoom {
+      from {transform:scale(0)} 
+      to {transform:scale(1)}
+    }
+
+    .close {
+      position: absolute;
+      top: 30px;
+      right: 45px;
+      color: #fff;
+      font-size: 34px;
+      font-weight: normal;
+      transition: 0.3s;
+      cursor: pointer;
+    }
+
+    .close:hover {
+      color: #bbb;
+    }
+  </style>
 </head>
 <body>
-
-
-    
   <header>
-    <a href="index.html" class="top">TOP</a>
-    <p>Creation</p>
-    
+    <a href="index.html">top</a> 
+    <div>Creation</div>
   </header>
 
+  <div class="container">
 
- <model-viewer 
-    src="camera.glb"
-    alt="3D Model"
-    auto-rotate 
-    camera-controls 
-    style="width: 600px; height: 400px;text">
-  </model-viewer>
-  <main class="container">
-
-    <!-- Top Section -->
-    
-    <section class="top">
-      <img src="aunt.jpg" alt="Woman" class="image-person">
-       <p class="move">image</p>
-      <div class="text-high">
-        <p>Make<br>me<br>HIGH</p>
+    <!-- 人物＋小さい写真エリア -->
+    <div class="photo-group">
+      <div class="mini-group">
+        <img src="ao.jpg" alt="小さい写真1" class="ao modal-image">
+        <img src="Id 324.jpg" alt="小さい写真2" class="modal-image">
+        <img src="town.jpg" alt="小さい写真3" class="town modal-image">
       </div>
-     
-     <img src="Id 324.jpg" alt="Night Bar" class="image-bar">
 
-      <img src="town.jpg" alt="Shop" class="image-shop">
-      <img src="ao.jpg" alt="Design" class="image-design">
-      <p class="design-text">Design</p>
-    </section>
+      <img src="aunt.jpg" alt="人物" class="person modal-image">
+    </div>
 
-    <!-- Middle Section: Sky -->
-    <section class="sky-section">
-      <img src="bill.jpg" alt="Sky and Buildings" class="image-sky">
-      <p class="sky-text">SKY</p>
-    </section>
+    <!-- テキスト -->
+    <div class="text1">
+      <span>Make</span>
+      <span>me</span>
+      <span>HIGH</span>
+    </div>
 
-    <!-- Bottom Section: Street -->
-    <section class="street-section">
-      <img src="street.jpg" alt="Street" class="image-street">
-      <p class="street-text">STREET</p>
-    </section>
+    <div class="design">design</div>
 
+    <!-- ビルの空 -->
+    <div class="image-block">
+      <img src="bill.jpg" alt="ビルと空" class="modal-image">
+      <h3>SKY</h3>
+    </div>
 
- </main>
- <footer>
-    <p class="footer">Just like the weather</p>
-  </footer>
-  
+    <!-- ストリート -->
+    <div class="image-block">
+      <img src="street.jpg" alt="ストリート" class="modal-image">
+      <h4>STREET</h4>
+    </div>
+
+  </div>
+
+  <footer>Just like the weather</footer>
+
+  <!-- モーダル本体 -->
+  <div id="myModal" class="modal">
+    <span class="close">&times;</span>
+    <img class="modal-content" id="img01">
+  </div>
+
   <script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const images = document.querySelectorAll(
-      '.image-person, .image-bar, .image-shop, .image-design, .image-sky, .image-street'
-    );
-   
-    // 最初はすべて非表示
-    images.forEach(img => {
-      img.classList.add('hidden');
-    });
-
-    // IntersectionObserverで画像が表示領域に入ったらふわっと表示
-    const observer = new IntersectionObserver((entries, observer) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('show');
-          observer.unobserve(entry.target);
-        }
-      });
-    }, {
-      threshold: 0.1
-    });
+    // 画像クリックでモーダル表示
+    const modal = document.getElementById("myModal");
+    const modalImg = document.getElementById("img01");
+    const images = document.querySelectorAll(".modal-image");
+    const closeBtn = document.querySelector(".close");
 
     images.forEach(img => {
-      observer.observe(img);
-    });
-
-    // mouse trail（煙のようなエフェクト）
-    document.addEventListener('mousemove', function(e) {
-  // 煙のようなトレイル
-  const smoke = document.createElement('div');
-  smoke.className = 'smoke-trail';
-  smoke.style.left = e.pageX + 'px';
-  smoke.style.top = e.pageY + 'px';
-  document.body.appendChild(smoke);
-  setTimeout(() => {
-    smoke.remove();
-  }, 500);
-
-  // 線のようなドットトレイル
-  const trail = document.createElement('div');
-  trail.className = 'trail-dot';
-  trail.style.left = e.pageX + 'px';
-  trail.style.top = e.pageY + 'px';
-  document.body.appendChild(trail);
-  setTimeout(() => {
-    trail.remove();
-  }, 700);
-});
-
-
-    // move テキストの表示切り替え（SKYが見えたら非表示）
-    const moveText = document.querySelector('.move');
-    const skyImage = document.querySelector('.image-sky');
-
-    const moveObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          moveText.classList.add('hidden');
-        }
+      img.addEventListener("click", function() {
+        modal.style.display = "block";
+        modalImg.src = this.src;
       });
-    }, {
-      threshold: 0.1
     });
 
-    if (skyImage) moveObserver.observe(skyImage);
+    // 閉じるボタン
+    closeBtn.onclick = function() {
+      modal.style.display = "none";
+    }
 
-    // スクロール位置で move テキストの表示切り替え
-    window.addEventListener('scroll', () => {
-      const scrollY = window.scrollY;
-      const windowHeight = window.innerHeight;
-      const bodyHeight = document.body.offsetHeight;
-
-      const atTop = scrollY <= 50;
-      const atBottom = scrollY + windowHeight >= bodyHeight - 50;
-
-      if (atTop) {
-        moveText.classList.remove('hidden');
-      } else if (atBottom) {
-        moveText.classList.add('hidden');
+    // 背景クリックでも閉じる
+    modal.onclick = function(e) {
+      if (e.target === modal) {
+        modal.style.display = "none";
       }
-    });
-  });
-  function createTrail(x, y) {
-  const smoke = document.createElement('div');
-  smoke.className = 'smoke-trail';
-  smoke.style.left = x + 'px';
-  smoke.style.top = y + 'px';
-  document.body.appendChild(smoke);
-  setTimeout(() => smoke.remove(), 500);
-
-  const trail = document.createElement('div');
-  trail.className = 'trail-dot';
-  trail.style.left = x + 'px';
-  trail.style.top = y + 'px';
-  document.body.appendChild(trail);
-  setTimeout(() => trail.remove(), 700);
-}
-
-document.addEventListener('mousemove', e => {
-  createTrail(e.pageX, e.pageY);
-});
-
-document.addEventListener('touchmove', e => {
-  const touch = e.touches[0];
-  createTrail(touch.pageX, touch.pageY);
-});
-
-</script>
-
-
-
-
+    }
+  </script>
 </body>
-
 </html>
-<style>
-body {
-  font-family: 'Georgia', serif;
-  background-color: white;
-   width: 100%;
-
-}
-header{
-  background-color: black;
-  text-align: center;
-  width: 1500px;
-  padding: 24px;
- 
-}
-header,p{
-
-  text-align: center;
-  color: white;
-  font-size: 30px;
-  font-weight: bold;
-  padding-left:10px;
-}
-
-    /* Basic Reset */
-
-/* 最初は隠す */
-.hidden {
-  opacity: 0;
-   transform: translateY(40px) scale(0.95);
-  transition: opacity 1.8s ease-out, transform 1.2s ease-out;
-}
-
-/* 表示状態に切り替え */
-.show {
-  opacity: 1;
-  transform: translateY(0) scale(1);
-}
-
-
-.top{
-    color: white;
-    text-decoration: none;
-}
-.top:hover{
-    color: #d63452;
-}
-.image-shop {
-  position: absolute;
-  top: 230px;
-  left: 575px; /* 元の528px → +30px → 558px */
-  width: 60px;
-}
-
-
-
-
-
-.smoke-trail {
-  position: absolute;
-  width: 40px;
-  height: 40px;
-  pointer-events: none;
-  background: radial-gradient(circle, rgba(243, 30, 6, 0.3), rgba(154, 193, 12, 0));
-  border-radius: 50%;
-  transform: translate(-50%, -50%);
-  animation: smokeFade 0.5s ease-out forwards;
-  z-index: 9999;
-  filter: blur(5px);
-}
-
-@keyframes fadeOut {
-  0% {
-    opacity: 1;
-    transform: translate(-50%, -50%) scale(1);
-  }
-  100% {
-    opacity: 0;
-    transform: translate(-50%, -50%) scale(1.5);
-  }
-}
-
-@keyframes smokeFade {
-  0% {
-    opacity: 0.6;
-    transform: translate(-50%, -50%) scale(1);
-  }
-  100% {
-    opacity: 0;
-    transform: translate(-50%, -50%) scale(2.5);
-  }
-}
-
-
-
-
-.container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.top {
-  position: relative;
-  width: 100%;
-  height: 800px;
-}
-@keyframes colorFade {
-  0% {
-    color: white;
-  }
-  100% {
-    color: #f40505; /* お好みの赤に */
-  }
-}
-
-
-
-
-.image-person {
-  position: absolute;
-  top: 55px;
-  right:50px;
-  height: 80%;
-  border-radius: 8px;
-}
-.text-high {
-  position: absolute;
-  top: 140px;
-  right: 380px;
-  font-size: 2em;
-  color: white;
-  text-shadow: 1px 1px 2px black;
-  font-family: 'Georgia', serif;
-}
-.image-bar {
-  position: absolute;
-  top: 200px;
-  left: 200px;
-  width: 150px;
-   border-radius: 3px;
-}
-
-.image-shop {
-  position: absolute;
-  top: 250px;
-  left: 530px;
-  width: 60px;
-  border-radius: 3px;
-}
-
-.image-design {
-  position: absolute;
-  top: 390px;
-  left: 60px;
-  width: 150px;
-   border-radius: 3px;
-}
-
-.design-text {
-  position: absolute;
-  top: 420px;
-  left: 140px;
-  color: #d6df2a;
-  font-size: 2em;
-  font-weight: bold;
-  font-family: monospace;
-}
-.move {
-  font-size: clamp(3em, 12vw, 10em);
-}
-
-.sky-section {
-  position: relative;
-  margin-top: 120px;
-  margin-right: 160px;
-  width: 100%;
-  max-width: 900px;
-}
-
-.image-sky {
-  width: 95%;
-  
-  margin-right: 300px;
-}
-
-.sky-text {
-  position: absolute;
-  right: 100px;
-  bottom: 30px;
-  font-size: 3em;
-  color: #eee;
-  text-shadow: 1px 1px 2px black;
-  
-}
-
-.street-section {
-  position: relative;
-  margin-top: 40px;
-  width: 90%;
-  max-width: 650px;
-}
-
-.image-street {
-  width: 100%;
-  display: block;
-}
-
-.street-text {
-  position: absolute;
-  right: 70px;
-  bottom: 40px;
-  font-size: 3em;
-  color: #eee;
-  text-shadow: 1px 1px 2px black;
-}
-.move {
-  position: fixed;      /* スクロールしても同じ場所に表示 */
-  top: 140px;           /* 表示位置（画面の上から140px） */
-  left: 320px;          /* 表示位置（画面の左から320px） */
-  font-size: 10em;
-  color: white;
-  text-shadow: 1px 1px 2px black;
-  z-index: 9999;        /* 最前面に表示 */
-  pointer-events: none; /* マウスイベントを通過させる（クリックなどが反応しないように） */
-}
-
-/* ゆっくり拡大する画像エフェクト */
-.image-person,
-.image-bar,
-.image-shop,
-.image-design,
-.image-sky,
-.image-street {
-  transition: transform 0.8s ease, opacity 0.8s ease;
-}
-
-.image-person:hover
- {transform: scale(1.1);
-  opacity: 0.95;
-  z-index: 9999;    
- }
-.image-bar:hover
- {transform: scale(3.4);
-  opacity: 1.3;
-z-index: 9999;    
- }
-.image-shop:hover 
-{transform: scale(5.5);
-  opacity: 1.1;
-  z-index: 10;
- z-index: 9999;    
-}
-.image-design:hover{transform: scale(3.2);
-  opacity: 1.1;
-  z-index: 9999;    
- 
-} 
-footer {
-  margin-top: 32px;
-  background-color: #2f2f2f;
-  text-align: center;
-  color: white;
-  font-weight: bold;
-  padding: 100px;
-  font-size: 3.8em;
-  width: 1300px;
-  padding-left: 80px;
-}
 

@@ -4,6 +4,7 @@ body {
   overflow-x: hidden;
   
   font-family: 'Georgia', serif;
+   overflow-x: hidden;
   
  
 }
@@ -61,12 +62,12 @@ h1 {
 .creation-button {
   display: inline-block;
   background: linear-gradient(to right, #cc3300, #ff6600);
-  padding: 10px 30px;
+  padding: 20px 40px;
   border-radius: 20px;
   font-size: 1.5em;
   font-weight: bold;
   box-shadow: 0 3px 6px rgba(0,0,0,0.3);
- text-align: center;
+  margin: 0 auto 0 50px;
 }
 
 .creation-section a {
@@ -246,8 +247,9 @@ footer p{
     font-size: 16px;
     margin: 0;
     width: 100%;
-    overflow-x: hidden;
     text-align: center;
+     overflow-x: hidden;
+    
   }
 
   header h1 {

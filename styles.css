@@ -166,7 +166,8 @@ section:hover .image-block-4 img {
   color: #333;
 }
 .video{
-  margin:0 24px 0 12px;
+  margin:0 50px 0 12px;
+  width:80%;
   }
 }
 /* ------------------ バー ------------------ */

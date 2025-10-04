@@ -43,6 +43,9 @@ h1 {
   opacity: 0;
   transition: opacity 1.4s ease-out 0.5s, transform 0.45s ease-out 3.0s;
 }
+.feed-in{
+  margin-top:24px;
+}
 
 .fade-in-on-scroll.visible {
   opacity: 1;

@@ -56,19 +56,17 @@ h1 {
 
 .creation-section {
   text-align: center;
-  margin: 30px 0;
 }
 
 .creation-button {
+  display: inline-block;
   background: linear-gradient(to right, #cc3300, #ff6600);
-  color: yellow;
+  padding: 10px 30px;
   border-radius: 20px;
   font-size: 1.5em;
   font-weight: bold;
   box-shadow: 0 3px 6px rgba(0,0,0,0.3);
-  margin-top: 90px;
-  text-align: center;
-  margin-left: 6Zpx;;
+ text-align: center;
 }
 
 .creation-section a {
@@ -349,28 +347,27 @@ h1 {
 }
 
 
-.creation-button {
-  display: inline-block;
-  background: linear-gradient(to right, #cc3300, #ff6600);
-  color: yellow;
-  padding: 10px 30px;
-  border-radius: 20px;
-  font-size: 1.5em;
-  font-weight: bold;
-  box-shadow: 0 3px 6px rgba(0,0,0,0.3);
-  margin-top: 90px;
-  text-align: center;
-}
+
+
+
 .creation-section a{
   color: #fff;
 }
 .creation-section a:hover{
   color: #cbc4c4;
 }
-.content-section {
+
 
   
-  
+
+  .creation-button {
+    margin-top : 40px;
+    font-size: 1.2em; 
+    text-align: center;/* スマホ用に少し小さめ */
+   
+  }
+}
+
   
 
 }
@@ -490,6 +487,7 @@ h1 {
  margin: auto 30px 0px 4px;
 
 }
+
 p {
   margin-bottom: 12px;
 }
@@ -510,14 +508,9 @@ p {
   display: flex;
   align-items: center;
 }
-.image-block-3{
-  display: ;
-}
 .image-block-3 {
   display: flex;
-  align-items: flex-start;
-  gap: 0px;
-  margin: 40px 0;
+ 
 }
 
 .image-block-3 img {
@@ -611,7 +604,7 @@ hr{
   padding-top: px;
 }
 /* スマホ用 */
-@media (max-width: 768px) {
+ {
 
   body {
     font-size: 16px;
@@ -700,11 +693,8 @@ hr{
   }
 
   /* ボタン */
-  .creation-button {
-    font-size: 1.2em;
-    padding: 8px 20px;
-  }
-}
+
+
 
 
 
